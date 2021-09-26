@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head th:replace="fragments::header"></head>
+	<body>
+		<nav th:replace="fragments::navbar"></nav>
+	    <div class="container-fluid">
+			<div class="row align-content-start">
+				<h1>New Idea</h1>
+				<form th:action="@{|/idea/create|}" method="POST" th:object="${idea}">
+	    			<div class="form-group">
+		    			<label>Content </label>
+						<input type="text" th:field="*{content}" class="form-control" id="content"/>
+					</div>
+					<input type="submit" value="Create" class="btn btn-outline-dark">		
+				</form>
+			</div>
+	    </div>
+	</body>
+</html>

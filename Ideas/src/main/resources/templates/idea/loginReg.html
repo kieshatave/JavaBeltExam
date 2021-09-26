@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head th:replace="fragments::header"></head>
+	<body>
+		<nav th:replace="fragments::navbar"></nav>
+	    <div class="container-fluid">
+			<div class="row">
+	    		<div class="col-6">
+	    			<div class="card">
+	    				<div class="card-body">
+		    				<form th:action="@{|/idea/login|}" th:object="${user}" method="POST">
+			    				<input type="text" th:field="*{email}" placeholder="email">
+			    				<input type="password" th:field="*{password}" placeholder="password">
+			    				<button type="submit">Login</button>
+			    			</form>
+	    				</div>
+	    			</div>	    			
+	    		</div>
+	    		<div class="col-6">
+	    			<div class="card">
+	    				<div class="card-body">
+		    				<form th:action="@{|/idea/register|}" th:object="${user}" method="POST">
+			    				<input type="text" th:field="*{email}" placeholder="email">	    				
+			    				<input type="password" th:field="*{password}" placeholder="password">	    				
+			    				<input type="password" th:field="*{passConfirm}" placeholder="confirm password">	    				
+			    				<button type="submit">Register</button>
+			    			</form>
+	    				</div>		    			
+	    			</div>
+	    		</div>
+    		</div>
+	    </div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head th:replace="fragments::header"></head>
+	<body>
+		<nav th:replace="fragments::navbar"></nav>
+	    <div class="container-fluid">
+			<div class="row align-content-start">
+				<h1>Welcome <span th:text="${user.name}"></span></h1>
+				<a th:href="@{|/logout|}">Logout</a>
+				<h3>Ideas</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Idea</th>
+							<th>Created By</th>
+							<th>Likes</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="idea : ${ideas}">
+							<td>
+								<a th:href="@{|/idea/${idea.id}|}" th:text="${idea.content}"></a>
+							</td>
+							<td th:text="${idea.creator.name}"></td>
+							<td th:text="${idea.likedBy.size()}"></td>
+							<td>
+								<span th:if="${idea.likedBy.contains(user) == false}">
+									<a th:href="@{|/ideas/like/${idea.id}|}">Like</a>
+								</span>
+								<span th:unless="${idea.likedBy.contains(user) == false}">
+									<a th:href="@{|/ideas/unlike/${idea.id}|}">UnLike</a>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	    </div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head th:replace="fragments::header"></head>
+	<body>
+		<nav th:replace="fragments::navbar"></nav>
+	    <div class="container-fluid">
+			<div class="row align-content-start">
+				<h1 th:text="${idea.content}"></h1>
+				<h3 th:text="@{|Created By: ${idea.creator.name}|}"></h3>
+			</div>
+			<div class="row">
+				<h4>Users who have liked your idea: </h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${idea.likedBy}">
+							<td th:text="${user.name}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a th:href="@{/idea/edit/${idea.id}}">Edit</a>
+	    </div>
+	</body>
+</html>
