@@ -15,7 +15,7 @@ public class User {
 	private String name;
 	@Email(message="Invalid entry") 
 	private String email;
-	@Size(min=8, max=16, message="Password must be 8 to 16 characters.")
+	@Size(min=8, message="Password must be at least 8 characters.")
 	private String password;
 	@Transient
 	private String passConfirm;
