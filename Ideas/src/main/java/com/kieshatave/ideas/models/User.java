@@ -2,6 +2,7 @@ package com.kieshatave.ideas.models;
 
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name="users")
@@ -10,11 +11,11 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Size(min=3, max=16)
 	private String name;
-	@Column 
+	@Email(message="Invalid entry") 
 	private String email;
-	@Column
+	@Size(min=8, max=16, message="Password must be 8 to 16 characters.")
 	private String password;
 	@Transient
 	private String passConfirm;
@@ -31,7 +32,7 @@ public class User {
 		this.password = password;
 	}
 	
-	@OneToMany(mappedBy="creator", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
 	private List<Idea> myIdeas;
 	
 	@ManyToMany(fetch=FetchType.LAZY)

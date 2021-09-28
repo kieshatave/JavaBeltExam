@@ -26,11 +26,17 @@ public class IdeaService {
 		return null;
 	}
 	
-	public void updateIdea(Idea idea) {
+	public void updateIdea(Long id, Idea ideaUpdate) {
+		Idea idea = this.findById(id);
+		idea.setContent(ideaUpdate.getContent());
 		repo.save(idea);
 	}
 	
 	public void deleteIdea(Long id) {
 		repo.deleteById(id);
+	}
+	
+	public void save(Idea idea) {
+		this.repo.save(idea);
 	}
 }

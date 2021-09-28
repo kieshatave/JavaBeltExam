@@ -6,7 +6,7 @@
 	    <div class="container-fluid">
 			<div class="row align-content-start">
 				<h1 th:text="${idea.content}"></h1>
-				<h3 th:text="@{|Created By: ${idea.creator.name}|}"></h3>
+				<h3 th:text="@{|Created By: ${idea.user.name}|}"></h3>
 			</div>
 			<div class="row">
 				<h4>Users who have liked your idea: </h4>
@@ -17,13 +17,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="user : ${idea.likedBy}">
-							<td th:text="${user.name}"></td>
+						<tr th:each="like : ${likes}">
+							<td th:text="${like.users.name}"></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<a th:href="@{/idea/edit/${idea.id}}">Edit</a>
+			<a th:href="@{|/idea/edit/${idea.id}|}">Edit</a>
 	    </div>
 	</body>
 </html>

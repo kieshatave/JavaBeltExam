@@ -22,14 +22,14 @@
 							<td>
 								<a th:href="@{|/idea/${idea.id}|}" th:text="${idea.content}"></a>
 							</td>
-							<td th:text="${idea.creator.name}"></td>
-							<td th:text="${idea.likedBy.size()}"></td>
+							<td th:text="${idea.user.name}"></td>
+							<td th:text="${idea.likes.size()}"></td>
 							<td>
-								<span th:if="${idea.likedBy.contains(user) == false}">
-									<a th:href="@{|/ideas/like/${idea.id}|}">Like</a>
+								<span th:if="${idea.likes.contains(user) == false}">
+									<a th:href="@{|/idea/like/${idea.id}|}">Like</a>
 								</span>
-								<span th:unless="${idea.likedBy.contains(user) == false}">
-									<a th:href="@{|/ideas/unlike/${idea.id}|}">UnLike</a>
+								<span th:unless="${idea.likes.contains(user) == false}">
+									<a th:href="@{|/idea/unlike/${idea.id}|}">UnLike</a>
 								</span>
 							</td>
 						</tr>

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="idea_likes")
-public class IdeaLike {
+public class Like {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -13,14 +13,20 @@ public class IdeaLike {
 	private Date createdAt;
 	@Column
 	private Date updatedAt;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	private User user;
+	private User users;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idea_id")
-	private Idea idea;
+	private Idea ideas;
 	
-	public IdeaLike() {}
+	public Like() {}
+	
+	public Like(User user, Idea idea) {
+    	
+    }
 		
 	public Long getId() {
 		return id;
@@ -28,17 +34,17 @@ public class IdeaLike {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public User getUser() {
-		return user;
+	public User getUsers() {
+		return users;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(User users) {
+		this.users = users;
 	}
-	public Idea getIdea() {
-		return idea;
+	public Idea getIdeas() {
+		return ideas;
 	}
-	public void setIdea(Idea idea) {
-		this.idea = idea;
+	public void setIdeas(Idea ideas) {
+		this.ideas = ideas;
 	}
 	
 	@PrePersist

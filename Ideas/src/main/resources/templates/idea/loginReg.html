@@ -20,6 +20,7 @@
 	    			<div class="card">
 	    				<div class="card-body">
 		    				<form th:action="@{|/idea/register|}" th:object="${user}" method="POST">
+		    					<input type="text" th:field="*{name}" placeholder="name">
 			    				<input type="text" th:field="*{email}" placeholder="email">	    				
 			    				<input type="password" th:field="*{password}" placeholder="password">	    				
 			    				<input type="password" th:field="*{passConfirm}" placeholder="confirm password">	    				

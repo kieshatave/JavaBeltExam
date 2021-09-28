@@ -18,7 +18,7 @@ public class Idea {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinTable(name="user_id")
-	private User creator;
+	private User user;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
@@ -26,7 +26,7 @@ public class Idea {
 			joinColumns=@JoinColumn(name="idea_id"),
 			inverseJoinColumns=@JoinColumn(name="user_id")
 			)
-	private List<User> likedBy;
+	private List<Like> likes;
 	
 	public Idea() {}
 	
@@ -46,17 +46,17 @@ public class Idea {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public User getCreator() {
-		return creator;
+	public User getUser() {
+		return user;
 	}
-	public void setCreator(User creator) {
-		this.creator = creator;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public List<User> getLikedBy() {
-		return likedBy;
+	public List<Like> getLikes() {
+		return likes;
 	}
-	public void setLikedBy(List<User> likedBy) {
-		this.likedBy = likedBy;
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
 	}
 	
 	@PrePersist

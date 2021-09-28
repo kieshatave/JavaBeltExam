@@ -28,7 +28,7 @@ public class UserController {
 		if (result.hasErrors()) return "loginReg";
 		user = this.userService.registerUser(user);
 		session.setAttribute("userId", user.getId());
-		return "redirect:/idea/create";
+		return "redirect:/ideas";
 	}
 	
 	@RequestMapping(value="/idea/login", method=RequestMethod.POST)
@@ -39,7 +39,7 @@ public class UserController {
 		if(isAuthenticated) {
 			User user = userService.findByEmail(email);
 			session.setAttribute("userId", user.getId());
-			return "redirect:/idea/create";
+			return "redirect:/ideas";
 		}
 		else {
 			model.addAttribute("error", "Invalid Credentials! Please try again!");
@@ -50,6 +50,6 @@ public class UserController {
 	@RequestMapping("/logout")
     public String logout(HttpSession session) {
     	session.invalidate();
-		return "redirect:/idea/login";
+		return "redirect:/";
     }
 }
